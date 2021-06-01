@@ -6,14 +6,14 @@ test("New Employee", () => {
 });
 
 test("Add Employee name", () => {
-  const empName = "Sam";
+  const empName = "Deborah";
   const emp = new Employee(empName);
   expect(emp.name).toBe(empName);
 });
 
 test("Add Employee ID", () => {
   const testValue = 01;
-  const emp = new Employee("Bill", testValue);
+  const emp = new Employee("Kyle", testValue);
   expect(emp.id).toBe(testValue);
 });
 
