@@ -46,6 +46,7 @@ const startOrgGenerator = () => {
             {
                 name: "exit",
                 message: "Please select a type of employee or exit to generate your org chart",
+                type: 'list',
                 choices: [
                     "Engineer",
                     "Intern",
@@ -53,7 +54,7 @@ const startOrgGenerator = () => {
                 ]
             }
         ])
-        .then(answer => {
+        .then((answer) => {
             switch (answer.exit) {
                 case "Engineer":
                     generateEngineer();
@@ -134,7 +135,11 @@ const startOrgGenerator = () => {
     };
 
     const generateOrgChart = () => {
-        fs.writeFile('./dist/index.html', render(org), "utf-8");
+        fs.writeFile('./dist/index.html', org, (err) => {
+            if (err) {
+                console.error(err);
+            };
+        });
     };
 
     generateManager();

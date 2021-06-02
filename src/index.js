@@ -1,6 +1,6 @@
 document.title = 'Org Chart';
 // create the team
-const generateTeam = (org) => {
+const generateTeam = org => {
 
     // create the manager html
     const generateManager = manager => {
