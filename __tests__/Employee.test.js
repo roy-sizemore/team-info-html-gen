@@ -12,37 +12,37 @@ test("Add Employee name", () => {
 });
 
 test("Add Employee ID", () => {
-  const testValue = 01;
-  const emp = new Employee("Kyle", testValue);
-  expect(emp.id).toBe(testValue);
+  const empId = 01;
+  const emp = new Employee("Kyle", empId);
+  expect(emp.id).toBe(empId);
 });
 
 test("Add Employee email", () => {
-  const testValue = "email@email.com";
-  const emp = new Employee("Francis", 1, testValue);
-  expect(emp.email).toBe(testValue);
+  const empEmail = "email@email.com";
+  const emp = new Employee("Francis", 1, empEmail);
+  expect(emp.email).toBe(empEmail);
 });
 
 test("Testing getName() function", () => {
-  const testValue = "Sarah";
-  const emp = new Employee(testValue);
-  expect(emp.getName()).toBe(testValue);
+  const empName = "Sarah";
+  const emp = new Employee(empName);
+  expect(emp.getName()).toBe(empName);
 });
 
 test("Testing getId() function", () => {
-  const testValue = 02;
-  const emp = new Employee("Jackie", testValue);
-  expect(emp.getId()).toBe(testValue);
+  const empId = 02;
+  const emp = new Employee("Jackie", empId);
+  expect(emp.getId()).toBe(empId);
 });
 
 test("Testing getEmail() function", () => {
-  const testValue = "email@email.com";
-  const emp = new Employee("Rhaze", 03, testValue);
-  expect(emp.getEmail()).toBe(testValue);
+  const empEmail = "email@email.com";
+  const emp = new Employee("Rhaze", 03, empEmail);
+  expect(emp.getEmail()).toBe(empEmail);
 });
 
 test("Testing getRole() function", () => {
-  const testValue = "Employee";
+  const empRole = "Employee";
   const emp = new Employee("John", 04, "test@test.com");
-  expect(emp.getRole()).toBe(testValue);
+  expect(emp.getRole()).toBe(empRole);
 });
