@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
 
 const generateOrgChart = (data) =>
     `<!DOCTYPE html>
@@ -20,17 +23,17 @@ const generateManager = () => {
 inquirer
     .prompt([
         {
-            name: 'managerName',
+            name: 'name',
             message: "Please enter the manager's name: ",
             type: 'input'
         },
         {
-            name: 'managerEmail',
+            name: 'email',
             message: "Pleae enter the manager's email: ",
             type: 'input'
         },
         {
-            name: 'managerID',
+            name: 'id',
             message: "Please enter the manager's ID: ",
             type: 'input'
         },
@@ -41,48 +44,92 @@ inquirer
         }
     ])
     .then((answers) => {
-        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         generateEmployee();
     });
 
-const generateEmployee = () => {
-    inquirer
+    const generateEmployee = () => {
+        inquirer
         .prompt([
-        {
-            name: 'name',
-            message: "Please enter the employee's name: ",
-            type: 'input'
-        },
-        {
-            name: 'id',
-            message: "Please enter the employee's ID: ",
-            type: 'input'
-        },
-        {
-            name: 'email',
-            message: "Please enter the employee's email address: ",
-            type: 'input'
-        },
-        {
-            name: 'mei',
-            message: 'Please enter the type of employee: ',
-            type: 'list',
-            choices: ['Manager', 'Engineer', 'Intern'],
-        },
-        {
-            name: 'exit',
-            message: 'Would you like to enter a new employee or exit?',
-            type: 'list',
-            choices: ['Enter another employee', 'Exit']
-        }
-    ])
-    .then((answers) => {
-        // const genOrg = generateOrgChart(answers);
-
-        fs.writeFile('./dist/index.html', generateOrgChart(answers), (err) => {
-            if (err) {
-                console.error(err);
+            {
+                name: "exit",
+                message: "Please select a type of employee or exit to generate your org chart",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "Exit prompts and generate org chart"
+                ]
+            }
+        ])
+        .then(answer => {
+            switch (answer.exit) {
+                case "Engineer":
+                    generateEngineer();
+                    break;
+        
+                case "Intern":
+                    generateIntern();
+                    break;
+        
+                default:
+                    generateOrgChart();
+                    break;
             };
         });
-    })};
+    };
+
+    const generateEngineer = () => {
+        inquirer
+            .prompt([
+            {
+                name: 'name',
+                message: "Please enter the engineer's name: ",
+                type: 'input'
+            },
+            {
+                name: 'id',
+                message: "Please enter the engineer's ID: ",
+                type: 'input'
+            },
+            {
+                name: 'email',
+                message: "Please enter the engineer's email address: ",
+                type: 'input'
+            },
+            {
+                name: 'username',
+                message: "Please enter the engineer's Github username: "
+            }
+        ])
+        .then((answers) => {
+            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.username);
+            generateEmployee();
+        });
+    };
+
+    const generateIntern = () => {
+        inquirer
+        .prompt([
+            {
+                name: 'name',
+                message: "Please enter the intern's name: ",
+                type: 'input'
+            },
+            {
+                name: 'id',
+                message: "Please enter the intern's ID: ",
+                type: 'input'
+            },
+            {
+                name: 'school',
+                message: "Please enter the intern's school",
+                type: 'input'
+            }
+        ])
+        .then((answers) => {
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            generateEmployee();
+        })
+    }
 };
+
