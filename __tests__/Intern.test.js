@@ -1,7 +1,7 @@
-const Intern = require("../lib/Intern");
+const Intern = require("../lib/intern");
 
 test("Tests inputting school", () => {
-  const testValue = "Harvard University";
+  const intSchool = "Harvard University";
   const int = new Intern("Nicole", 01, "email@email.edu", intSchool);
   expect(int.school).toBe(intSchool);
 });

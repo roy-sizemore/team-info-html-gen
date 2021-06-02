@@ -1,19 +1,19 @@
-const Engineer = require("../lib/Engineer");
+const Engineer = require("../lib/engineer");
 
 test("Test GitHub username", () => {
-  const testValue = "username";
-  const emp = new Engineer("Rowsdower", 01, "email@email.com", testValue);
-  expect(emp.github).toBe(testValue);
+  const engUsername = "username";
+  const eng = new Engineer("Rowsdower", 01, "email@email.com", engUsername);
+  expect(eng.username).toBe(engUsername);
 });
 
 test("Test getRole() function", () => {
-  const testValue = "Engineer";
-  const emp = new Engineer("Jeffrey", 02, "email@email.com", "username");
-  expect(emp.getRole()).toBe(testValue);
+  const engRole = "Engineer";
+  const eng = new Engineer("Jeffrey", 02, "email@email.com", "username");
+  expect(eng.getRole()).toBe(engRole);
 });
 
 test("Test getGithub() function", () => {
-  const testValue = "username";
-  const emp = new Engineer("Pamn", 03, "email@email.com", testValue);
-  expect(emp.getGithub()).toBe(testValue);
+  const engUsername = "username";
+  const eng = new Engineer("Pamn", 03, "email@email.com", engUsername);
+  expect(eng.getGithub()).toBe(engUsername);
 });

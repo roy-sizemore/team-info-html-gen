@@ -4,7 +4,9 @@ const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
 
-const startTeam = () => {
+const org = [];
+
+const startOrgGenerator = () => {
 
     const generateManager = () => {
         inquirer
@@ -32,6 +34,8 @@ const startTeam = () => {
         ])
         .then((answers) => {
             const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+            org.push(manager);
+
             generateEmployee();
         });
     };
@@ -91,6 +95,8 @@ const startTeam = () => {
         ])
         .then((answers) => {
             const engineer = new Engineer(answers.name, answers.id, answers.email, answers.username);
+            org.push(engineer);
+
             generateEmployee();
         });
     };
@@ -116,10 +122,18 @@ const startTeam = () => {
         ])
         .then((answers) => {
             const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            org.push(intern);
+
             generateEmployee();
         })
-    }
+    };
+
+    const generateOrgChart = () => {
+        fs.writeFile('./dist/index.html', render(org), "utf-8");
+    };
 
     generateManager();
 };
+
+startOrgGenerator();
 
