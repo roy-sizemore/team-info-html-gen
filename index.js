@@ -115,6 +115,11 @@ const startOrgGenerator = () => {
                 type: 'input'
             },
             {
+                name: 'email',
+                message: "Please enter the intern's email: ",
+                type: 'input'
+            },
+            {
                 name: 'school',
                 message: "Please enter the intern's school",
                 type: 'input'
