@@ -1,9 +1,8 @@
-document.title = 'Org Chart';
-// create the team
-const generateTeam = org => {
+// Generate org chart HTML using inquirer prompt answers and functions from lib files
+const generateTeam = (org) => {
 
-    // create the manager html
-    const generateManager = manager => {
+    // Generate Manager card
+    const generateManager = (manager) => {
         return `
         <div class="card employee-card">
         <div class="card-header">
@@ -12,17 +11,17 @@ const generateTeam = org => {
         </div>
         <div class="card-body">
             <ul class="list-group">
-                <li class="list-group-item">Employee ID: ${manager.getId()}</li>
-                <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                <li class="list-group-item">Office No.: ${manager.getOfficeNumber()}</li>
+                <li class="list-card">Employee ID: ${manager.getId()}</li>
+                <li class="list-card">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                <li class="list-card">Office No.: ${manager.getOfficeNumber()}</li>
             </ul>
         </div>
     </div>
         `;
     };
 
-    // create the html for engineers
-    const generateEngineer = engineer => {
+    // Generate Engineer card
+    const generateEngineer = (engineer) => {
         return `
             <div class="card employee-card">
                 <div class="card-header">
@@ -31,16 +30,16 @@ const generateTeam = org => {
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Employee ID: ${engineer.getId()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                        <li class="list-group-item">GitHub Username: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.getGithub()}</a></li>
+                        <li class="list-card">Employee ID: ${engineer.getId()}</li>
+                        <li class="list-card">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                        <li class="list-card">GitHub Username: <a href="https://github.com/${engineer.getGithub()}" target="_blank" rel="noopener noreferrer">${engineer.getGithub()}</a></li>
                     </ul>
                 </div>
             </div>`;
     };
 
-    // create the html for interns
-    const generateIntern = intern => {
+    // Generate Intern card
+    const generateIntern = (intern) => {
         return `
             <div class="card employee-card">
                 <div class="card-header">
@@ -49,14 +48,15 @@ const generateTeam = org => {
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item">Intern ID: ${intern.getId()}</li>
-                        <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
-                        <li class="list-group-item">College/University: ${intern.getSchool()}</li>
+                        <li class="list-card">Intern ID: ${intern.getId()}</li>
+                        <li class="list-card">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+                        <li class="list-card">College/University: ${intern.getSchool()}</li>
                     </ul>
                 </div>
             </div>`;
     };
 
+    // Display role in appropriate card using getRole()
     const content = [];
     content.push(org.filter(employee => employee.getRole() === "Manager").map(manager => generateManager(manager)));
     content.push(org.filter(employee => employee.getRole() === "Engineer").map(engineer => generateEngineer(engineer)).join(""));
@@ -66,40 +66,39 @@ const generateTeam = org => {
 
 };
 
-// export function to generate entire page
+// Function to export org page
 module.exports = org => {
 
     return `
-    <!DOCTYPE html>
-<html lang="en">
+        <!DOCTYPE html>
+        <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Org Chart</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c502137733.js"></script>
-</head>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+            <title>Org Chart</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <link rel="stylesheet" href="style.css">
+        </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 jumbotron mb-3 team-heading">
-                <h1 class="text-center">My Team</h1>
+        <body>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 jumbotron mb-3 org-top">
+                        <h1 class="text-center">Org Chart</h1>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="team-area col-12 d-flex justify-content-center">
-                ${generateTeam(org)}
+            <div class="container">
+                <div class="row">
+                    <div class="team-area col-12 d-flex justify-content-center">
+                        ${generateTeam(org)}
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</body>
-</html>
-    `;
+            <script src="https://kit.fontawesome.com/c502137733.js"></script>
+        </body>
+        </html>
+            `;
 };

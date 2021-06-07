@@ -3,11 +3,14 @@ const fs = require('fs');
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const teamPage = require("./src/index.js")
 
+// Array to hold the org based on user input
 const org = [];
 
 const startOrgGenerator = () => {
 
+    // Engineer function. User will need the Manager's name, email, ID and office number
     const generateManager = () => {
         inquirer
         .prompt([
@@ -40,6 +43,7 @@ const startOrgGenerator = () => {
         });
     };
 
+    // Employee function. User will need to select which type of employee for which they'll be entering info or to exit and generate their org chart
     const generateEmployee = () => {
         inquirer
         .prompt([
@@ -71,6 +75,7 @@ const startOrgGenerator = () => {
         });
     };
 
+    // Engineer function. User will need the Engineer's name, ID, email and GitHub username
     const generateEngineer = () => {
         inquirer
             .prompt([
@@ -102,6 +107,7 @@ const startOrgGenerator = () => {
         });
     };
 
+    // Intern function. User will need the Intern's name, ID, email and college/university
     const generateIntern = () => {
         inquirer
         .prompt([
@@ -133,9 +139,9 @@ const startOrgGenerator = () => {
             generateEmployee();
         })
     };
-
+ 
     const generateOrgChart = () => {
-        fs.writeFile('./dist/index.html', org, (err) => {
+        fs.writeFile('./dist/index.html', teamPage(org), (err) => {
             if (err) {
                 console.error(err);
             };
