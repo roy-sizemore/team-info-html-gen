@@ -46,4 +46,6 @@
 
   GitHub: [roy-sizemore](https://github.com/roy-sizemore/)
 
-  
+  ## **Demo** (click to enlarge)
+  <img src="https://github.com/roy-sizemore/screenshots/blob/main/team-info-html-gen_demo.gif" alt="demo" width="400px">
+    
