@@ -12,7 +12,7 @@ test("Add Employee name", () => {
 });
 
 test("Add Employee ID", () => {
-  const empId = 01;
+  const empId = 1;
   const emp = new Employee("Kyle", empId);
   expect(emp.id).toBe(empId);
 });
@@ -30,19 +30,19 @@ test("Testing getName() function", () => {
 });
 
 test("Testing getId() function", () => {
-  const empId = 02;
+  const empId = 2;
   const emp = new Employee("Jackie", empId);
   expect(emp.getId()).toBe(empId);
 });
 
 test("Testing getEmail() function", () => {
   const empEmail = "email@email.com";
-  const emp = new Employee("Rhaze", 03, empEmail);
+  const emp = new Employee("Rhaze", 3, empEmail);
   expect(emp.getEmail()).toBe(empEmail);
 });
 
 test("Testing getRole() function", () => {
-  const empRole = "Employee";
-  const emp = new Employee("John", 04, "test@test.com");
+  const empRole = "Current Employee";
+  const emp = new Employee("John", 4, "test@test.com");
   expect(emp.getRole()).toBe(empRole);
 });

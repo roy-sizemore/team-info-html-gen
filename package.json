@@ -4,7 +4,7 @@
   "description": "Team Info Site Generator. OSU Coding Bootcamp Week 10 Homework",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node index.js"
   },
   "repository": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/roy-sizemore/team-info-html-gen#readme",
   "dependencies": {
-    "inquirer": "^8.0.0"
+    "inquirer": "^8.0.0",
+    "jest": "^27.0.4"
   }
 }
