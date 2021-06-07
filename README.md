@@ -48,4 +48,6 @@
 
   ## **Demo** (click to enlarge)
   <img src="https://github.com/roy-sizemore/screenshots/blob/main/team-info-html-gen_demo.gif" alt="demo" width="400px">
+  <br>
+  <img src="https://github.com/roy-sizemore/screenshots/blob/main/team-info-html-gen_tests_demo.gif" alt="tests demo" width="400">
     
